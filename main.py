@@ -442,9 +442,18 @@ def most_pokemons_leaderboard(df, config, type):
     ExcelRows = int(config['COBBLEMONLEADERBOARDS']['ExcelRows'])
     ExcelCols = int(config['COBBLEMONLEADERBOARDS']['ExcelColumns'])
     for index, row in df[0:ExcelRows*ExcelCols].iterrows():
-        ws.cell(row=(i%ExcelRows)+3, column=2+math.floor(i/ExcelRows)*3, value=str(i+1)+".")
-        ws.cell(row=(i%ExcelRows)+3, column=3+math.floor(i/ExcelRows)*3, value=index)
-        ws.cell(row=(i%ExcelRows)+3, column=4+math.floor(i/ExcelRows)*3, value=row[0])
+        # Colonne pour le classement et le nom (fusionné)
+        ws.cell(
+            row=(i % ExcelRows) + 3, 
+            column=2 + math.floor(i / ExcelRows) * 2,  # Multiplicateur 2 au lieu de 3
+            value=f"{i+1}. {index}"
+        )
+        # Colonne pour la valeur
+        ws.cell(
+            row=(i % ExcelRows) + 3, 
+            column=3 + math.floor(i / ExcelRows) * 2,  # Décalage réduit
+            value=row[0]
+        )
         i += 1
     now = datetime.datetime.now()
     ws.cell(row=ExcelRows+3, column=2, value=now.strftime(config['COBBLEMONLEADERBOARDS']['LastUpdated']))
