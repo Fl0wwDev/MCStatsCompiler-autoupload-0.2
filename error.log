@@ -1,0 +1,31 @@
+=== Error logged at 2025-03-16 03:10:24 ===
+
+Error message: [Errno 2] no such file
+
+=== INPUT Configuration ===
+mode: sftp
+localpath: null
+host: 5029.mystrator.com
+port: 2022
+ftppath: root
+
+=== GIT Configuration ===
+usegit: true
+username: Fl0wwDev
+token: ghp_X8lMQX******************************
+repo: test
+branch: main
+
+=== Credentials Check ===
+username.txt exists: True
+password.txt exists: True
+
+=== Librairies check ===
+pandas: OK
+numpy: OK
+openpyxl: OK
+paramiko: OK
+excel2img: OK
+requests: OK
+base64: OK
+configparser: OK
